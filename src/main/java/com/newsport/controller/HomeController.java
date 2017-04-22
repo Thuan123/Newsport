@@ -196,6 +196,10 @@ public class HomeController {
 			model.addObject("listimg", listImg);
 		}
 		model.addObject("sigs", sig);
+
+		if(sig.getMaprelatednews() != null){
+			model.addObject("relatedNews",  sigDAOs.listRelatedNews(sig.getMaprelatednews()));
+		}
 		model.setViewName("details");
 		return model;
 	}

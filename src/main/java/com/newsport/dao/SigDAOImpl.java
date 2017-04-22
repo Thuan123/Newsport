@@ -2,6 +2,7 @@ package com.newsport.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -78,7 +79,7 @@ public class SigDAOImpl implements SigDAO {
 	public Sig_article findID(int sigId) {
 		// TODO Auto-generated method stub
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT id,title,abstract,text_content,extracted_content,cover_url,published,meta FROM sig_article WHERE id=" + sigId;
+		String sql = "SELECT id,title,abstract,text_content,extracted_content,cover_url,published,meta,maprelatednews FROM sig_article WHERE id=" + sigId;
 		return jdbcTemplate.query(sql, new ResultSetExtractor<Sig_article>() {
 
 			@Override
@@ -95,7 +96,7 @@ public class SigDAOImpl implements SigDAO {
                     p.setCover_url(rs.getString("cover_url"));
                     p.setPublished(rs.getDate("published"));
                     p.setMeta(rs.getString("meta"));
-                    
+					p.setMaprelatednews(rs.getString("maprelatednews"));
 					return p;
 				}
 
@@ -154,6 +155,21 @@ public class SigDAOImpl implements SigDAO {
 
 				});
 		return listImg;
+	}
+
+	@Override
+	public List<Sig_article> listRelatedNews(String str) {
+		jdbcTemplate = new JdbcTemplate(dataSource);
+		List<Sig_article> listSigs = new ArrayList<Sig_article>();
+		String []list = str.split(",");
+		for(int i = 0; i < list.length; i++){
+			String []tmp = list[i].split("###");
+			if(tmp.length > 0){
+				Sig_article post = findID(Integer.valueOf(tmp[0]));
+				listSigs.add(post);
+			}
+		}
+		return listSigs;
 	}
 
 	@Override
