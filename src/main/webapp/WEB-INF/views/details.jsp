@@ -9,10 +9,6 @@
 <head>
 
 <title>News Sport</title>
-<script type="text/javascript">
-	window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.mvpthemes.com\/flexmag\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.1"}};
-	!function(a,b,c){function d(a){var c,d=b.createElement("canvas"),e=d.getContext&&d.getContext("2d");return e&&e.fillText?(e.textBaseline="top",e.font="600 32px Arial","flag"===a?(e.fillText(String.fromCharCode(55356,56806,55356,56826),0,0),d.toDataURL().length>3e3):"diversity"===a?(e.fillText(String.fromCharCode(55356,57221),0,0),c=e.getImageData(16,16,1,1).data.toString(),e.fillText(String.fromCharCode(55356,57221,55356,57343),0,0),c!==e.getImageData(16,16,1,1).data.toString()):("simple"===a?e.fillText(String.fromCharCode(55357,56835),0,0):e.fillText(String.fromCharCode(55356,57135),0,0),0!==e.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8"),diversity:d("diversity")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8&&c.supports.diversity||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
-</script>
 
 <jsp:include page="load-js.jsp"></jsp:include>
 
@@ -228,31 +224,73 @@ body.custom-background {
 														<!--social-sharing-bot-->
 														<div class="mvp-related-posts left relative">
 															<h4 class="post-header">
-																<span class="post-header">Related News</span>
+																<span class="post-header">Related News 1</span>
+															</h4>
+															<div class="row">
+																<c:forEach var="lienwans" items="${relatedNews}">
+																<div class="col-sm-4">
+																	<a href="<c:url value="/details/${lienwans.id}"/>" title="${lienwans.title}">
+																		<img alt="" width="300" height="180" class="reg-img img-responsive center-block wp-post-image" alt="latte"
+																			 src="${lienwans.cover_url}">
+																	</a>
+																	<p><a href="<c:url value="/details/${lienwans.id}"/>">
+																		<b>${lienwans.title}</b> </a></p>
+																</div>
+																</c:forEach>
+															</div>
+															<%--<ul>--%>
+																<%--<c:forEach var="lienwans" items="${relatedNews}">--%>
+																	<%--<li style="margin-left: 10px">--%>
+																		<%--<div class="mvp-related-img left relative">--%>
+																			<%--<a--%>
+																				<%--href="<c:url value="/details/${lienwans.id}"/>"--%>
+																				<%--rel="bookmark" title=${lienwans.title}> <img--%>
+																				<%--width="300" height="180"--%>
+																				<%--src=${lienwans.cover_url--%>
+																				<%--}--%>
+																				<%--class="reg-img wp-post-image" alt="latte"--%>
+																				<%--sizes="(max-width: 300px) 100vw, 300px" /> <img--%>
+																				<%--width="80" height="80"--%>
+																				<%--src=${lienwans.cover_url--%>
+																				<%--}--%>
+																				<%--class="mob-img wp-post-image" alt="latte"--%>
+																				<%--sizes="(max-width: 80px) 100vw, 80px" />--%>
+																			<%--</a>--%>
+																		<%--</div> <!--related-img-->--%>
+																		<%--<div class="mvp-related-text left relative">--%>
+
+																		<%--</div> <!--related-text-->--%>
+																	<%--</li>--%>
+																<%--</c:forEach>--%>
+															<%--</ul>--%>
+														</div>
+														<div class="mvp-related-posts left relative">
+															<h4 class="post-header">
+																<span class="post-header">Related News 2</span>
 															</h4>
 															<ul>
 																<c:forEach var="lienwans" items="${metasort}">
 																	<li>
 																		<div class="mvp-related-img left relative">
 																			<a
-																				href="<c:url value="/details/${lienwans.news.id}"/>"
-																				rel="bookmark" title=${lienwans.news.title}> <img
-																				width="300" height="180"
-																				src=${lienwans.news.cover_url
-																				}
-																				class="reg-img wp-post-image" alt="latte"
+																					href="<c:url value="/details/${lienwans.news.id}"/>"
+																					rel="bookmark" title=${lienwans.news.title}> <img
+																					width="300" height="180"
+																					src=${lienwans.news.cover_url
+																							}
+																							class="reg-img wp-post-image" alt="latte"
 																				sizes="(max-width: 300px) 100vw, 300px" /> <img
-																				width="80" height="80"
-																				src=${lienwans.news.cover_url
-																				}
-																				class="mob-img wp-post-image" alt="latte"
+																						width="80" height="80"
+																						src=${lienwans.news.cover_url
+																								}
+																								class="mob-img wp-post-image" alt="latte"
 																				sizes="(max-width: 80px) 100vw, 80px" />
 																			</a>
 																		</div> <!--related-img-->
 																		<div class="mvp-related-text left relative">
 																			<a
-																				href="<c:url value="/details/${lienwans.news.id}"/>">
-																				${lienwans.news.title} </a>
+																					href="<c:url value="/details/${lienwans.news.id}"/>">
+																					${lienwans.news.title} </a>
 																		</div> <!--related-text-->
 																	</li>
 																</c:forEach>
@@ -284,59 +322,9 @@ body.custom-background {
 																	<h4 class="post-header">
 																		<span class="post-header">Full Meta</span>
 																	</h4>
-																	<!--<small><a rel="nofollow"
-																		id="cancel-comment-reply-link"
-																		href="/flexmag/matt-damon-ponders-the-big-questions-in-new-the-martian-teaser/#respond"
-																		style="display: none;">Cancel reply</a></small>-->
 																</h3>
 																<textarea class="post-meta left"
 																	itemprop="name headline" disabled>${sigs.meta}</textarea>
-																<!--<form
-																	action="http://www.mvpthemes.com/flexmag/wp-comments-post.php"
-																	method="post" id="commentform" class="comment-form">
-																	<p class="comment-notes">
-																		<span id="email-notes">Your email address will
-																			not be published.</span> Required fields are marked <span
-																			class="required">*</span>
-																	</p>
-																	<p class="comment-form-comment">
-																		<label for="comment">Comment</label>
-																		<textarea id="comment" name="comment" cols="45"
-																			rows="8" aria-required="true" required="required"></textarea>
-																	</p>
-																	<p class="comment-form-author">
-																		<label for="author">Name <span
-																			class="required">*</span></label> <input id="author"
-																			name="author" type="text" value="" size="30"
-																			aria-required='true' required='required' />
-																	</p>
-																	<p class="comment-form-email">
-																		<label for="email">Email <span
-																			class="required">*</span></label> <input id="email"
-																			name="email" type="text" value="" size="30"
-																			aria-describedby="email-notes" aria-required='true'
-																			required='required' />
-																	</p>
-																	<p class="comment-form-url">
-																		<label for="url">Website</label> <input id="url"
-																			name="url" type="text" value="" size="30" />
-																	</p>
-																	<p class="form-submit">
-																		<input name="submit" type="submit" id="submit"
-																			class="submit" value="Post Comment" /> <input
-																			type='hidden' name='comment_post_ID' value='144'
-																			id='comment_post_ID' /> <input type='hidden'
-																			name='comment_parent' id='comment_parent' value='0' />
-																	</p>
-																	<p style="display: none;">
-																		<input type="hidden" id="akismet_comment_nonce"
-																			name="akismet_comment_nonce" value="71743cd183" />
-																	</p>
-																	<p style="display: none;">
-																		<input type="hidden" id="ak_js" name="ak_js"
-																			value="134" />
-																	</p>
-																</form>-->
 															</div>
 															<!-- #respond -->
 
