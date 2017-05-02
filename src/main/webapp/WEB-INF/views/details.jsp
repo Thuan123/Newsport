@@ -54,7 +54,7 @@ body.custom-background {
 									<div class="nav-left-wrap left relative">
 										<div class="fly-but-wrap left relative">
 											<span></span> <span></span> <span></span> <span></span>
-										</div>									
+										</div>
 									</div>
 									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
@@ -109,10 +109,12 @@ body.custom-background {
 											<header id="post-header">
 											<table style="width: 30%">
 												<tr>
-													<td><a class="post-cat-link" href="<c:url value="/details/${sigs.id}"/>"> <span
+													<td><a class="post-cat-link"
+														href="<c:url value="/details/${sigs.id}"/>"> <span
 															class="post-head-cat">Semantic</span>
 													</a></td>
-													<td><a class="post-cat-link" href="<c:url value="/keydetails/${sigs.id}"/>"> <span
+													<td><a class="post-cat-link"
+														href="<c:url value="/keydetails/${sigs.id}"/>"> <span
 															class="post-head-cat">Key</span>
 													</a></td>
 												</tr>
@@ -140,10 +142,12 @@ body.custom-background {
 											</div>
 											<!--post-info-wrap--> </header><!--post-header-->
 											<div id="post-feat-img" class="left relative">
-												<p><img width="1000" height="600"
-													src=${sigs.cover_url
+												<p>
+													<img width="750" height="460"
+														src=${sigs.cover_url
 													}
-													class="attachment- size- wp-post-image" alt="Foot Ball" sizes="(max-width: 1000px) 100vw, 1000px" />
+														class="attachment- size- wp-post-image" alt="Foot Ball"
+														onerror="imgError(this);" />
 												<div class="post-feat-text">
 
 													<!--<span class="feat-caption">Photo:
@@ -162,8 +166,7 @@ body.custom-background {
 															<h4>${sigs.abstract_content}</h4>
 														</span> </section>
 														<!--social-sharing-top-->
-														${sigs.extracted_content}
-														<br>
+														${sigs.extracted_content} <br>
 														<div>
 															<c:forEach var="imgs" items="${listimg}">
 																<div id="post-feat-img" class="left relative">
@@ -171,7 +174,7 @@ body.custom-background {
 																		src=${imgs.url
 																				}
 																		class="reg-img wp-post-image" alt="latte"
-																		sizes="(max-width: 1000px) 100vw, 1000px" />
+																		onerror="imgError(this);" />
 																</div>
 																<br>
 																<p>${imgs.des}
@@ -291,52 +294,6 @@ body.custom-background {
 																</h3>
 																<textarea class="post-meta left"
 																	itemprop="name headline" disabled>${sigs.meta}</textarea>
-																<!--<form
-																	action="http://www.mvpthemes.com/flexmag/wp-comments-post.php"
-																	method="post" id="commentform" class="comment-form">
-																	<p class="comment-notes">
-																		<span id="email-notes">Your email address will
-																			not be published.</span> Required fields are marked <span
-																			class="required">*</span>
-																	</p>
-																	<p class="comment-form-comment">
-																		<label for="comment">Comment</label>
-																		<textarea id="comment" name="comment" cols="45"
-																			rows="8" aria-required="true" required="required"></textarea>
-																	</p>
-																	<p class="comment-form-author">
-																		<label for="author">Name <span
-																			class="required">*</span></label> <input id="author"
-																			name="author" type="text" value="" size="30"
-																			aria-required='true' required='required' />
-																	</p>
-																	<p class="comment-form-email">
-																		<label for="email">Email <span
-																			class="required">*</span></label> <input id="email"
-																			name="email" type="text" value="" size="30"
-																			aria-describedby="email-notes" aria-required='true'
-																			required='required' />
-																	</p>
-																	<p class="comment-form-url">
-																		<label for="url">Website</label> <input id="url"
-																			name="url" type="text" value="" size="30" />
-																	</p>
-																	<p class="form-submit">
-																		<input name="submit" type="submit" id="submit"
-																			class="submit" value="Post Comment" /> <input
-																			type='hidden' name='comment_post_ID' value='144'
-																			id='comment_post_ID' /> <input type='hidden'
-																			name='comment_parent' id='comment_parent' value='0' />
-																	</p>
-																	<p style="display: none;">
-																		<input type="hidden" id="akismet_comment_nonce"
-																			name="akismet_comment_nonce" value="71743cd183" />
-																	</p>
-																	<p style="display: none;">
-																		<input type="hidden" id="ak_js" name="ak_js"
-																			value="134" />
-																	</p>
-																</form>-->
 															</div>
 															<!-- #respond -->
 
@@ -378,12 +335,13 @@ body.custom-background {
 																	src=${sig_mores.cover_url
 																	}
 																	class="reg-img wp-post-image" alt="man-headphones"
-																	sizes="(max-width: 300px) 100vw, 300px" /> <img
+																	onerror="imgError(this);" />
+																	 <img
 																	width="80" height="80"
 																	src=${sig_mores.cover_url
 																	}
 																	class="mob-img wp-post-image" alt="man-headphones"
-																	sizes="(max-width: 80px) 100vw, 80px" />
+																	onerror="imgError(this);"/>
 															</div> <!--feat-widget-img-->
 															<div class="feat-widget-text">
 																<span class="side-list-cat">Sport</span>
@@ -392,12 +350,6 @@ body.custom-background {
 														</a>
 													</div>
 												</c:forEach>
-												<!--feat-widget-wrap-->
-
-
-
-
-												<!--feat-widget-wrap-->
 											</div>
 											<!--feat-widget-cont-->
 										</div>
@@ -407,13 +359,6 @@ body.custom-background {
 								</div>
 								<!--post-wrap-out1-->
 							</div>
-							<!--post-main-wrap-->
-							<div id="foot-ad-wrap" class="left relative">
-								<div
-									style="width: 90%; height: 30px; background: #ddd; text-align: center; display: inline-block; color: #bbb; font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 1.2rem; white-space: nowrap; padding: 30px 5% 0; overflow: hidden;">
-								</div>
-							</div>
-							<!--foot-ad-wrap-->
 						</div>
 						<!--body-main-cont-->
 					</div>
@@ -553,15 +498,5 @@ body.custom-background {
 		<i class="fa fa-angle-up fa-3"></i> <span class="to-top-text">To
 			Top</span>
 	</div>
-	<!--fly-to-top-->
-	<div class="fly-fade"></div>
-	<!--fly-fade-->
-
-	<div id="fb-root"></div>
-
-	<script type="text/javascript">
-
-    </script>
-
 </body>
 </html>

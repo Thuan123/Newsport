@@ -67,16 +67,6 @@ th, td {
 										<div class="fly-but-wrap left relative">
 											<span></span> <span></span> <span></span> <span></span>
 										</div>
-										<!--fly-but-wrap-->
-										<div class="nav-logo left">
-											<h1>
-												<!--<a itemprop="url" href="#"><img
-													itemprop="logo"
-													src="#"
-													alt="News Sport" /></a>-->
-											</h1>
-										</div>
-										<!--nav-logo-->
 									</div>
 									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
@@ -140,12 +130,12 @@ th, td {
 																					src=${newlienwans.cover_url
 																					}
 																					class="reg-img wp-post-image" alt="woman-beach2"
-																					sizes="(max-width: 450px) 100vw, 450px" /> <img
+																					onerror="imgError(this);" /> <img
 																					width="80" height="80"
 																					src=${newlienwans.cover_url
 																					}
 																					class="mob-img wp-post-image" alt="woman-beach2"
-																					sizes="(max-width: 80px) 100vw, 80px" />
+																					onerror="imgError(this);" />
 																				<!--feat-info-wrap-->
 																			</div>
 																			<!--archive-list-img-->
@@ -238,10 +228,5 @@ th, td {
 		<i class="fa fa-angle-up fa-3"></i> <span class="to-top-text">To
 			Top</span>
 	</div>
-	<!--fly-to-top-->
-	<div class="fly-fade"></div>
-	<!--fly-fade-->
-
-	<div id="fb-root"></div>
 </body>
 </html>

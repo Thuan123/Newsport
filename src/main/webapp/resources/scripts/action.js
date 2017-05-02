@@ -30,32 +30,6 @@ jQuery(document).ready(function($) {
 	  $('.fly-nav-menu').niceScroll({cursorcolor:"#888",cursorwidth: 7,cursorborder: 0,zindex:999999});
 	});
 
-
-
-	// Infinite Scroll
-/*	$('.infinite-content').infinitescroll({
-	  navSelector: ".nav-links",
-	  nextSelector: ".nav-links a:first",
-	  itemSelector: ".infinite-post",
-	  loading: {
-		msgText: "Loading more posts...",
-		finishedMsg: "Sorry, no more posts"
-	  },
-	  errorCallback: function(){ $(".inf-more-but").css("display", "none") }
-	});
-	$(window).unbind('.infscr');
-	$(".inf-more-but").click(function(){
-   		$('.infinite-content').infinitescroll('retrieve');
-        	return false;
-	});
-	$(window).load(function(){
-		if ($('.nav-links a').length) {
-			$('.inf-more-but').css('display','inline-block');
-		} else {
-			$('.inf-more-but').css('display','none');
-		}
-	});
-*/
 $(window).load(function() {
   // The slider being synced must be initialized first
   $('.post-gallery-bot').flexslider({
