@@ -106,7 +106,8 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/scripts/details.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/latest.js"/>"></script>
-
+<script type="text/javascript"
+	src="<c:url value="/resources/scripts/load-error-image.js"/>"></script>
 </head>
 <body>
 

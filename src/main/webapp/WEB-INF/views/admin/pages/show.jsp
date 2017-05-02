@@ -62,16 +62,6 @@ th, td {
 										<div class="fly-but-wrap left relative">
 											<span></span> <span></span> <span></span> <span></span>
 										</div>
-										<!--fly-but-wrap-->
-										<div class="nav-logo left">
-											<h1>
-												<!--<a itemprop="url" href="index.jsp"><img
-													itemprop="logo"
-													src=""
-													alt="News Sport" /></a>-->
-											</h1>
-										</div>
-										<!--nav-logo-->
 									</div>
 									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
@@ -163,7 +153,7 @@ th, td {
 													src=${sigs.cover_url
 													}
 													class="attachment- size- wp-post-image" alt="male-model"
-													itemprop="image" sizes="(max-width: 1000px) 100vw, 1000px" />
+													itemprop="image" onerror="imgError(this);" />
 												<div class="post-feat-text">
 													
 													<!--<span class="feat-caption">Photo:
@@ -238,15 +228,5 @@ th, td {
 		<i class="fa fa-angle-up fa-3"></i> <span class="to-top-text">To
 			Top</span>
 	</div>
-	<!--fly-to-top-->
-	<div class="fly-fade"></div>
-	<!--fly-fade-->
-
-	<div id="fb-root"></div>
-
-	<script type="text/javascript">
-
-    </script>
-
 </body>
 </html>

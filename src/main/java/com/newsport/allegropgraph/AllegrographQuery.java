@@ -40,9 +40,6 @@ public class AllegrographQuery {
 					
 					if (!s.toString().contains("url")) {
 						news.add(GetId.getNewid(s.toString()));
-
-						System.out.println("ID = " + GetId.getNewid(s.toString()) + ":" + "Meta = "
-								+ GetId.getMetaName(o.toString()));
 					}
 				}
 
@@ -58,8 +55,6 @@ public class AllegrographQuery {
 
 	public static List<Integer> searchAPI(AGRepositoryConnection conn, String query) throws Exception {
 		List<Integer> news = new ArrayList<Integer>();
-		System.out.println("\nStarting query news.");
-
 		try {
 
 			AGTupleQuery tupleQuery = conn.prepareTupleQuery(QueryLanguage.SPARQL, query);
@@ -70,12 +65,7 @@ public class AllegrographQuery {
 					while (result.hasNext()) {
 
 						BindingSet bindingSet = result.next();
-						// for (int i = 0; i < bindingName.size(); i++) {
 						Value s = bindingSet.getValue(bindingName.get(0));
-						// System.out.println(bindingName.get(i) + "\t" +
-						// GetId.getNewid(s.toString()));
-						// }
-						System.out.println(GetId.getNewid(s.toString()));
 						news.add(GetId.getNewid(s.toString()));
 					}
 
@@ -83,7 +73,6 @@ public class AllegrographQuery {
 				result.close();
 			}
 			return news;
-			// conn.close();
 		} finally {
 			conn.close();
 		}
