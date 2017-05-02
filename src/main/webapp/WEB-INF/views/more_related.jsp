@@ -56,17 +56,7 @@ body.custom-background {
 									<div class="nav-left-wrap left relative">
 										<div class="fly-but-wrap left relative">
 											<span></span> <span></span> <span></span> <span></span>
-										</div>
-										<!--fly-but-wrap-->
-										<div class="nav-logo left">
-											<h1>
-												<!--<a itemprop="url" href="index"><img
-													itemprop="logo"
-													src="#"
-													alt="News Sport" /></a>-->
-											</h1>
-										</div>
-										<!--nav-logo-->
+										</div>								
 									</div>
 									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
@@ -135,12 +125,12 @@ body.custom-background {
 																					src=${latests.news.cover_url
 																					}
 																					class="reg-img wp-post-image" alt="woman-beach2"
-																					sizes="(max-width: 450px) 100vw, 450px" /> <img
+																					onerror="imgError(this);"/> <img
 																					width="80" height="80"
 																					src=${latests.news.cover_url
 																					}
 																					class="mob-img wp-post-image" alt="woman-beach2"
-																					sizes="(max-width: 80px) 100vw, 80px" />
+																					onerror="imgError(this);"/>
 
 																			</div>
 
@@ -157,16 +147,6 @@ body.custom-background {
 																</a></li>
 															</c:forEach>
 														</ul>
-
-														<!--<a href="#" class="inf-more-but">More Posts</a>
-														<div class="nav-links">
-															<div class="pagination">
-																<span>Page 1 of 4</span> <span class="current">1</span>
-																<a
-																	href='#'
-																	class="inactive">2</a> 
-															</div>
-														</div>-->
 													</div>
 
 												</div>
@@ -200,11 +180,11 @@ body.custom-background {
 																<img src=${newmenus.cover_url } alt="" width="300px"
 																	height="180px" class="widget-img-main wp-post-image"
 																	alt="woman-beach2"
-																	sizes="(max-width: 300px) 100vw, 300px" /> <img
+																	onerror="imgError(this);" /> <img
 																	src=${newmenus.cover_url } alt="" width="80px"
 																	height="80px" class="widget-img-side wp-post-image"
 																	alt="woman-beach2"
-																	sizes="(max-width: 80px) 100vw, 80px" />
+																	onerror="imgError(this);" />
 															</div> <!--blog-widget-img-->
 															<div class="blog-widget-text left relative">
 
@@ -229,11 +209,11 @@ body.custom-background {
 																		<img src=${mores.cover_url } alt="" width="300px"
 																			height="180px" class="widget-img-main wp-post-image"
 																			alt="woman-beach2"
-																			sizes="(max-width: 300px) 100vw, 300px" /> <img
+																			onerror="imgError(this);" /> <img
 																			src=${mores.cover_url } alt="" width="80px"
 																			height="80px" class="widget-img-side wp-post-image"
 																			alt="woman-beach2"
-																			sizes="(max-width: 80px) 100vw, 80px" />
+																			onerror="imgError(this);" />
 																	</div>
 																	<div class="blog-widget-text left relative">
 																		<span class="side-list-cat">Sport</span>

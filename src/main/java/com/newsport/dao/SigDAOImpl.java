@@ -27,7 +27,7 @@ public class SigDAOImpl implements SigDAO {
 	public List<Sig_article> list() {
 		// TODO Auto-generated method stub
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT id,title,abstract,cover_url,published,meta FROM sig_article ORDER BY crawled DESC limit 500";
+		String sql = "SELECT id,title,abstract,cover_url,published,meta FROM sig_article ORDER BY crawled ASC limit 500";
 		List<Sig_article> listSigs = jdbcTemplate.query(sql,
 				new RowMapper<Sig_article>() {
 

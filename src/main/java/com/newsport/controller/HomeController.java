@@ -29,7 +29,6 @@ import com.google.gson.Gson;
 import com.newsport.allegropgraph.Allegrograph;
 import com.newsport.allegropgraph.AllegrographQuery;
 import com.newsport.dao.SigDAO;
-import com.newsport.httpclients.HttpCilentExample;
 import com.newsport.model.Sig_article;
 import com.newsport.model.Sig_image;
 import com.newsport.operation.RDF;
@@ -38,7 +37,6 @@ import com.newsport.searchclients.JsonParser;
 import com.newsport.utils.Search;
 import com.newsport.utils.Sort;
 import com.newsport.utils.SortComparator;
-
 
 @Controller
 public class HomeController {
@@ -77,13 +75,8 @@ public class HomeController {
 		model.addAttribute("mores", RandomArr.RandomElement(5, listPage));
 
 		if (conn == null) {
-			try {
-				System.out.println(conn);
-				conn = Allegrograph.conn;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
+			Allegrograph alle = new Allegrograph();
+			conn = alle.getAGConnection();
 		}
 	}
 
@@ -240,7 +233,7 @@ public class HomeController {
 					}
 				}
 			}
-			Collections.sort(sortList, new SortComparator());		
+			Collections.sort(sortList, new SortComparator());
 		}
 
 		model.addObject("id", id);
@@ -263,10 +256,9 @@ public class HomeController {
 						sortList.add(new Sort(sigs, Collections.frequency(allegrographList, temp)));
 					}
 				}
-				System.out.println(temp + ": " + Collections.frequency(allegrographList, temp));
 			}
 
-			Collections.sort(sortList, new SortComparator());			
+			Collections.sort(sortList, new SortComparator());
 			conn.close();
 
 		} catch (Exception e) {
@@ -302,45 +294,48 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/searchNews", method = RequestMethod.GET)
-	public ModelAndView getSearch(@ModelAttribute Search sigs, ModelAndView model, HttpServletRequest request, HttpServletResponse response) {
-		
+	public ModelAndView getSearch(@ModelAttribute Search sigs, ModelAndView model, HttpServletRequest request,
+			HttpServletResponse response) {
+
 		String data = null;
 		List<Integer> idlist = new ArrayList<Integer>();
 		List<Sig_article> latests = new ArrayList<Sig_article>();
 
-		//ClassLoader classLoader = JsonParser.class.getClassLoader();
+		ClassLoader classLoader = JsonParser.class.getClassLoader();
 
-		///File file = new File(classLoader.getResource("pages/data.txt").getFile());
+		 File file = new
+		 File(classLoader.getResource("pages/data.txt").getFile());
 
-		try {
+		 data = JsonParser.parserID(JsonParser.readFile(file));
+		/*try {
 			if (sigs.getQuery() != null) {
 				data = JsonParser.parserID(HttpCilentExample.sendGet(sigs.getQuery()));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 
-	if(data!=null){
-		query = data;/*JsonParser.parserID(JsonParser.readFile(file));*/
-		if (query != null) {
-			System.out.println(query);
-			try {
-				idlist = AllegrographQuery.searchAPI(conn, query);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			if (idlist.size() != 0) {
-				for (int i = 0; i < idlist.size(); i++) {
-					Sig_article sis = sigDAOs.findID(idlist.get(i));
-					if (sis != null) {
-						latests.add(sis);
+		if (data != null) {
+			query = data;/* JsonParser.parserID(JsonParser.readFile(file)); */
+			if (query != null) {
+				System.out.println(query);
+				try {
+					idlist = AllegrographQuery.searchAPI(conn, query);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (idlist.size() != 0) {
+					for (int i = 0; i < idlist.size(); i++) {
+						Sig_article sis = sigDAOs.findID(idlist.get(i));
+						if (sis != null) {
+							latests.add(sis);
+						}
 					}
 				}
+				model.addObject("reponse", query);
 			}
-			model.addObject("reponse", query);
-     	   }
 		}
-		
+
 		PagedListHolder pagedListHolder = new PagedListHolder(latests);
 		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
 		pagedListHolder.setPage(page);

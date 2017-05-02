@@ -57,16 +57,6 @@ body.custom-background {
 										<div class="fly-but-wrap left relative">
 											<span></span> <span></span> <span></span> <span></span>
 										</div>
-										<!--fly-but-wrap-->
-										<div class="nav-logo left">
-											<h1>
-												<!--<a itemprop="url" href="index.jsp"><img
-													itemprop="logo"
-													src=""
-													alt="News Sport" /></a>-->
-											</h1>
-										</div>
-										<!--nav-logo-->
 									</div>
 									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
@@ -148,7 +138,7 @@ body.custom-background {
 														src=${sigs.cover_url
 													}
 														class="attachment- size- wp-post-image" alt="male-model"
-														itemprop="image" sizes="(max-width: 1000px) 100vw, 1000px" />
+														itemprop="image" onerror="imgError(this);" />
 													<div class="post-feat-text">
 														<span class="post-excerpt left"> </span>
 														<!--<span class="feat-caption">Photo:

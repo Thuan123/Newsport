@@ -126,11 +126,11 @@ body.custom-background { background-color: #eeeeee; }
 																			<img width="450" height="270"
 																				src=${latests.cover_url}
 																				class="reg-img wp-post-imagejpg" alt="woman-beach2"
-																				sizes="(max-width: 450px) 100vw, 450px" /> <img
+																				onerror="imgError(this);" /> <img
 																				width="80" height="80"
 																				src=${latests.cover_url}
 																				class="mob-img wp-post-image jpg" alt="woman-beach2"
-																				sizes="(max-width: 80px) 100vw, 80px" />
+																				onerror="imgError(this);" />
 																			<!--feat-info-wrap-->
 																		</div>
 																		<!--archive-list-img-->
@@ -193,11 +193,11 @@ body.custom-background { background-color: #eeeeee; }
 																	<img src=${newmenus.cover_url} alt="" width="300px"
 																		height="180px" class="widget-img-main wp-post-image"
 																		alt="woman-beach2"
-																		sizes="(max-width: 300px) 100vw, 300px" /> <img
+																		onerror="imgError(this);" /> <img
 																		src=${newmenus.cover_url} alt="" width="80px"
 																		height="80px" class="widget-img-side wp-post-image"
 																		alt="woman-beach2"
-																		sizes="(max-width: 80px) 100vw, 80px" />
+																		onerror="imgError(this);" />
 																</div> <!--blog-widget-img-->
 																<div class="blog-widget-text left relative">
 																	
@@ -221,11 +221,11 @@ body.custom-background { background-color: #eeeeee; }
 																	<img src=${mores.cover_url} alt="" width="300px"
 																		height="180px" class="widget-img-main wp-post-image"
 																		alt="woman-beach2"
-																		sizes="(max-width: 300px) 100vw, 300px" /> <img
+																		onerror="imgError(this);" /> <img
 																		src=${mores.cover_url} alt="" width="80px"
 																		height="80px" class="widget-img-side wp-post-image"
 																		alt="woman-beach2"
-																		sizes="(max-width: 80px) 100vw, 80px" />
+																		onerror="imgError(this);" />
 																</div> <!--blog-widget-img-->
 																<div class="blog-widget-text left relative">
 																	<span class="side-list-cat">Sport</span>

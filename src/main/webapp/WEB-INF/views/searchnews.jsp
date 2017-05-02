@@ -70,16 +70,6 @@ function myFunction() {
 										<div class="fly-but-wrap left relative">
 											<span></span> <span></span> <span></span> <span></span>
 										</div>
-										<!--fly-but-wrap-->
-										<div class="nav-logo left">
-											<h1>
-												<!--<a itemprop="url" href="index"><img
-													itemprop="logo"
-													src="#"
-													alt="News Sport" /></a>-->
-											</h1>
-										</div>
-										<!--nav-logo-->
 									</div>
 									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
@@ -146,12 +136,12 @@ function myFunction() {
 																					src=${latests.cover_url
 																					}
 																					class="reg-img wp-post-image" alt="woman-beach2"
-																					sizes="(max-width: 450px) 100vw, 450px" /> <img
+																					onerror="imgError(this);" /> <img
 																					width="80" height="80"
 																					src=${latests.cover_url
 																					}
 																					class="mob-img wp-post-image" alt="woman-beach2"
-																					sizes="(max-width: 80px) 100vw, 80px" />
+																					onerror="imgError(this);" />
 																			</div>
 																			<div class="archive-list-in">
 																				<div class="archive-list-text left relative">
@@ -191,21 +181,11 @@ function myFunction() {
 													<ul class="blog-widget-list left relative">
 														<c:forEach var="mores" items="${mores}">
 															<li><a href="<c:url value="/details/${mores.id}"/>"
-																rel="bookmark"> <!--<div class="blog-widget-img left relative">
-																	<img src=${mores.cover_url} alt="" width="300px"
-																		height="180px" class="widget-img-main wp-post-image"
-																		alt="woman-beach2"
-																		sizes="(max-width: 300px) 100vw, 300px" /> <img
-																		src=${mores.cover_url} alt="" width="80px"
-																		height="80px" class="widget-img-side wp-post-image"
-																		alt="woman-beach2"
-																		sizes="(max-width: 80px) 100vw, 80px" />
-																</div> <!--blog-widget-img-->
+																rel="bookmark"> 
 																	<div class="blog-widget-text left relative">
 																		<span class="side-list-cat">Sport</span>
 																		<h2>${mores.title}</h2>
-																		<!--<p>${mores.abstract_content}</p>-->
-																	</div> <!--blog-widget-text-->
+																	</div>
 															</a></li>
 														</c:forEach>
 													</ul>
