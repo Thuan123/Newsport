@@ -53,7 +53,11 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView listHome(ModelAndView model) {
-
+		
+		
+	    listPage.clear();
+	    listPage.addAll(sigDAOs.list(200));
+	    
 		model.addObject("features", RandomArr.RandomElement(4, listPage));
 		model.addObject("feats", RandomArr.RandomElement(3, listPage));
 		model.addObject("foots", RandomArr.RandomElement(21, listPage));
@@ -68,9 +72,8 @@ public class HomeController {
 	@ModelAttribute
 	public void addingCommonObjects(Model model) {
 		if (listPage.isEmpty()) {
-			listPage.addAll(sigDAOs.list());
+			listPage.addAll(sigDAOs.list(200));
 		}
-		model.addAttribute("menus", RandomArr.RandomElement(5, listPage));
 		model.addAttribute("homes", RandomArr.RandomElement(1, listPage));
 		model.addAttribute("hots", RandomArr.RandomElement(1, listPage));
 		model.addAttribute("mores", RandomArr.RandomElement(5, listPage));
@@ -83,7 +86,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/latestnews", method = RequestMethod.GET)
 	public ModelAndView listLatest(ModelAndView model) {
-		model.addObject("latests", RandomArr.RandomElement(6, listPage));
+		model.addObject("latests", sigDAOs.list(60));
 		model.setViewName("latestnews");
 		return model;
 	}
@@ -171,11 +174,6 @@ public class HomeController {
 
 				conn.close();
 			} catch (Exception e) {
-				try {
-					conn.close();
-				} catch (RepositoryException e1) {
-					e1.printStackTrace();
-				}
 				e.printStackTrace();
 			}
 		}
@@ -191,24 +189,6 @@ public class HomeController {
 		}
 		model.addObject("sigs", sig);
 		model.setViewName("details");
-		return model;
-	}
-
-	@RequestMapping(value = "/relatednews/{title}", method = RequestMethod.GET)
-	public ModelAndView relatednews(@PathVariable("title") String title, ModelAndView model) {
-		List<Sig_article> News = new ArrayList<Sig_article>();
-		if (title != null) {
-			for (int i = 0; i < listPage.size(); i++) {
-				if (listPage.get(i).getMeta() != null) {
-					if (listPage.get(i).getMeta().indexOf(title) != -1) {
-						News.add(listPage.get(i));
-					}
-				}
-			}
-		}
-		model.addObject("newlienwans", News);
-
-		model.setViewName("relatednews");
 		return model;
 	}
 
@@ -278,22 +258,6 @@ public class HomeController {
 		return model;
 	}
 
-	@RequestMapping(value = "/timenews/{time}", method = RequestMethod.GET)
-	public ModelAndView timenews(@PathVariable("time") String time, ModelAndView model) {
-		List<Sig_article> News = new ArrayList<Sig_article>();
-		if (time != null) {
-			for (int i = 0; i < listPage.size(); i++) {
-				if (listPage.get(i).getPublished().toString().indexOf(time) != -1) {
-					News.add(listPage.get(i));
-				}
-			}
-
-		}
-		model.addObject("newlienwans", News);
-		model.setViewName("timenews");
-		return model;
-	}
-
 	@RequestMapping(value = "/searchNews", method = RequestMethod.GET)
 	public ModelAndView getSearch(@ModelAttribute Search sigs, ModelAndView model, HttpServletRequest request,
 			HttpServletResponse response) {
@@ -316,7 +280,6 @@ public class HomeController {
 		if (data != null) {
 			query = data;/* JsonParser.parserID(JsonParser.readFile(file)); */
 			if (query != null) {
-				System.out.println(query);
 				try {
 					idlist = AllegrographQuery.searchAPI(conn, query);
 				} catch (Exception e) {
@@ -334,7 +297,7 @@ public class HomeController {
 			}
 		}
 
-		PagedListHolder pagedListHolder = new PagedListHolder(latests);
+		PagedListHolder<Sig_article> pagedListHolder = new PagedListHolder<Sig_article>(latests);
 		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
 		pagedListHolder.setPage(page);
 		int pageSize = 3;

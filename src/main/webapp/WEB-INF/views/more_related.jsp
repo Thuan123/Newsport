@@ -30,20 +30,6 @@ body.custom-background {
 
 	<div id="site" class="left relative">
 		<div id="site-wrap" class="left relative">
-			<div id="fly-wrap">
-				<div class="fly-wrap-out">
-					<div class="fly-side-wrap">
-						<jsp:include page="fly-side-wrap.jsp"></jsp:include>
-					</div>
-					<!--fly-side-wrap-->
-					<div class="fly-wrap-in">
-						<jsp:include page="fly-menu-wrap.jsp"></jsp:include>
-					</div>
-					<!--fly-wrap-in-->
-				</div>
-				<!--fly-wrap-out-->
-			</div>
-			<!--fly-wrap-->
 			<div id="head-main-wrap" class="left relative">
 				<div id="head-main-top" class="left relative"></div>
 				<!--head-main-top-->

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -7,15 +7,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en-US">
 <head>
-<meta charset="UTF-8">
-
 <title>News Sport</title>
 <jsp:include page="load-js.jsp"></jsp:include>
+
 <style type="text/css" id="custom-background-css">
 body.custom-background {
 	background-color: #eeeeee;
 }
 </style>
+
 
 </head>
 
@@ -24,16 +24,6 @@ body.custom-background {
 
 	<div id="site" class="left relative">
 		<div id="site-wrap" class="left relative">
-			<div id="fly-wrap">
-				<div class="fly-wrap-out">
-					<div class="fly-side-wrap">
-						<jsp:include page="fly-side-wrap.jsp"></jsp:include>
-					</div>
-					<div class="fly-wrap-in">
-						<jsp:include page="fly-menu-wrap.jsp"></jsp:include>
-					</div>
-				</div>
-			</div>
 			<div id="head-main-wrap" class="left relative">
 				<div id="head-main-top" class="left relative"></div>
 				<!--head-main-top-->
@@ -43,19 +33,6 @@ body.custom-background {
 							<div id="main-nav-cont" class="left" itemscope
 								itemtype="http://schema.org/Organization">
 								<div class="nav-logo-out">
-									<div class="nav-left-wrap left relative">
-										<div class="fly-but-wrap left relative">
-											<span></span> <span></span> <span></span> <span></span>
-										</div>
-										<div class="nav-logo left">
-											<h1>
-												<a itemprop="url" href="<c:url value="/"/>"> <!--<img itemprop="logo" src="#" alt="News Sport"/>-->
-												</a>
-											</h1>
-										</div>
-										<!--nav-logo-->
-									</div>
-									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
 										<div class="nav-menu-out">
 											<div class="nav-menu-in">
@@ -114,13 +91,11 @@ body.custom-background {
 													src=${features.cover_url } alt="" width="450px"
 													height="270px" class="unlazy mob-img wp-post-image"
 													alt="woman-beach2" onerror="imgError(this);" />
-											</div>
-											<!--feat-wide5-img-->
+											</div> <!--feat-wide5-img-->
 											<div class="feat-wide5-text">
 												<span class="feat-cat">Sport</span>
 												<h2>${features.title}</h2>
-											</div>
-											<!--feat-wide5-text-->
+											</div> <!--feat-wide5-text-->
 										</a>
 									</div>
 									<!--feat-wide5-main-->
@@ -155,13 +130,11 @@ body.custom-background {
 																							src=${feats.cover_url } alt="" width="80px"
 																							height="80px" class="mob-img wp-post-image"
 																							alt="woman-jeans" onerror="imgError(this);" />
-																					</div>
-																					<!--row-widget-img-->
+																					</div> <!--row-widget-img-->
 																					<div class="row-widget-text left relative">
 																						<span class="side-list-cat">Sport</span>
 																						<p>${feats.title}</p>
-																					</div>
-																					<!--row-widget-text-->
+																					</div> <!--row-widget-text-->
 																			</a></li>
 																		</c:forEach>
 																	</ul>
@@ -188,8 +161,7 @@ body.custom-background {
 																							height="80px"
 																							class="widget-img-side wp-post-image" alt="band"
 																							onerror="imgError(this);" />
-																					</div>
-																					<!--blog-widget-img-->
+																					</div> <!--blog-widget-img-->
 																					<div class="blog-widget-text left relative">
 																						<span class="side-list-cat">Sport</span>
 																						<h2>${foots.title}</h2>
@@ -216,14 +188,12 @@ body.custom-background {
 																						height="270px"
 																						class="widget-img-side wp-post-image" alt="band"
 																						onerror="imgError(this);" />
-																				</div>
-																				<!--feat-widget-img-->
+																				</div> <!--feat-widget-img-->
 																				<div class="feat-widget-text left relative">
 																					<span class="side-list-cat">Sport</span>
 																					<h2>${homes.title}</h2>
 																					<p>${homes.abstract_content}</p>
-																				</div>
-																				<!--feat-widget-text-->
+																				</div> <!--feat-widget-text-->
 																			</a>
 																		</div>
 																		<!--feat-widget-wrap-->
@@ -252,14 +222,12 @@ body.custom-background {
 																							height="80px"
 																							class="widget-img-side wp-post-image"
 																							alt="celebrity1" onerror="imgError(this);" />
-																					</div>
-																					<!--blog-widget-img-->
+																					</div> <!--blog-widget-img-->
 																					<div class="blog-widget-text left relative">
 																						<span class="side-list-cat">Sport</span>
 																						<h2>${hots.title}</h2>
 																						<p>${hots.abstract_content}</p>
-																					</div>
-																					<!--blog-widget-text-->
+																					</div> <!--blog-widget-text-->
 																			</a></li>
 																		</c:forEach>
 																	</ul>
@@ -283,14 +251,12 @@ body.custom-background {
 																							src=${galerys.cover_url } alt="" width="80px"
 																							height="80px" class="mob-img wp-post-image"
 																							alt="car2" onerror="imgError(this);" />
-																					</div>
-																					<!--blog-widget-img-->
+																					</div> <!--blog-widget-img-->
 																					<div class="blog-widget-text left relative">
 																						<span class="side-list-cat">Sport</span>
 																						<h2>${galerys.title}</h2>
 																						<p>${galerys.abstract_content}</p>
-																					</div>
-																					<!--blog-widget-text-->
+																					</div> <!--blog-widget-text-->
 																			</a></li>
 																		</c:forEach>
 																	</ul>
@@ -304,15 +270,10 @@ body.custom-background {
 																				class="inactive">3</a> <a href='#' class="inactive">4</a>
 																		</div>
 																	</div>
-																	<!--nav-links-->
 																</div>
-																<!--blog-widget-wrap-->
 															</div>
-															<!--home-widget-->
 														</div>
-														<!--home-mid-wrap-->
 													</div>
-													<!--home-left-col-->
 												</div>
 												<!--home-wrap-in2-->
 												<div id="tab-col2"
@@ -334,33 +295,20 @@ body.custom-background {
 																					class="attachment-mvp-small-thumb size-mvp-small-thumb wp-post-image"
 																					alt="car2" onerror="imgError(this);" />
 																			</div>
-																			<!--side-list-img-->
 																			<div class="side-list-in">
 																				<div class="side-list-text left relative">
 																					<span class="side-list-cat">Sport</span>
 																					<p>${latests.title}</p>
 																				</div>
-																				<!--side-list-text-->
 																			</div>
-																			<!--side-list-in-->
 																		</div>
-																		<!--side-list-out-->
 																</a></li>
 															</c:forEach>
 														</ul>
 													</div>
-													<!--side-list-wrap-->
-													<div class="more-posts-wrap left relative">
-														<a href="<c:url value="/latestnews.html"/>"><span
-															class="more-posts-text">More Latest News</span></a>
-													</div>
-													<!--more-posts-wrap-->
 												</div>
-												<!--home-mid-col-->
 											</div>
-											<!--home-wrap-out2-->
 										</div>
-										<!--home-left-wrap-->
 									</div>
 									<!--home-wrap-in1-->
 									<div id="tab-col3" class="home-right-col relative tab-col-cont">
@@ -377,17 +325,17 @@ body.custom-background {
 															<div class="feat-widget-img left relative">
 																<img src=${mores.cover_url } alt="" width="300px"
 																	height="180px" class="reg-img wp-post-image" alt="car2"
-																	onerror="imgError(this);" /> <img src=${mores.cover_url
-																	} alt="" width="80px" height="80px"
+																	onerror="imgError(this);" /> <img
+																	src=${mores.cover_url
+																	} alt=""
+																	width="80px" height="80px"
 																	class="mob-img wp-post-image" alt="car2"
 																	onerror="imgError(this);" />
-															</div>
-															<!--feat-widget-img-->
+															</div> <!--feat-widget-img-->
 															<div class="feat-widget-text">
 																<span class="side-list-cat">Sport</span>
 																<h2>${mores.title}</h2>
-															</div>
-															<!--feat-widget-text-->
+															</div> <!--feat-widget-text-->
 														</a>
 													</div>
 													<!--feat-widget-wrap-->

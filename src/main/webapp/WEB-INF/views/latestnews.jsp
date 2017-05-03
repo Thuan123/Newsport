@@ -1,49 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en-US">
 <head>
-<meta charset="UTF-8">
 
 <title>Latest News</title>
 
-<script type="text/javascript">
-   window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.mvpthemes.com\/flexmag\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.1"}};
-   !function(a,b,c){function d(a){var c,d=b.createElement("canvas"),e=d.getContext&&d.getContext("2d");return e&&e.fillText?(e.textBaseline="top",e.font="600 32px Arial","flag"===a?(e.fillText(String.fromCharCode(55356,56806,55356,56826),0,0),d.toDataURL().length>3e3):"diversity"===a?(e.fillText(String.fromCharCode(55356,57221),0,0),c=e.getImageData(16,16,1,1).data.toString(),e.fillText(String.fromCharCode(55356,57221,55356,57343),0,0),c!==e.getImageData(16,16,1,1).data.toString()):("simple"===a?e.fillText(String.fromCharCode(55357,56835),0,0):e.fillText(String.fromCharCode(55356,57135),0,0),0!==e.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8"),diversity:d("diversity")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8&&c.supports.diversity||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
-</script>
 <jsp:include page="load-js.jsp"></jsp:include>
 
-
 <style type="text/css" id="custom-background-css">
-body.custom-background { background-color: #eeeeee; }
+body.custom-background {
+	background-color: #eeeeee;
+}
 </style>
-
 </head>
 
 <body
 	class="page page-id-177 page-template page-template-page-latest page-template-page-latest-php custom-background">
 
-
-
 	<div id="site" class="left relative">
 		<div id="site-wrap" class="left relative">
-			<div id="fly-wrap">
-				<div class="fly-wrap-out">
-					<div class="fly-side-wrap">
-						<jsp:include page="fly-side-wrap.jsp"></jsp:include>
-					</div>
-					<!--fly-side-wrap-->
-					<div class="fly-wrap-in">
-						<jsp:include page="fly-menu-wrap.jsp"></jsp:include>
-					</div>
-					<!--fly-wrap-in-->
-				</div>
-				<!--fly-wrap-out-->
-			</div>
-			<!--fly-wrap-->
 			<div id="head-main-wrap" class="left relative">
 				<div id="head-main-top" class="left relative"></div>
 				<!--head-main-top-->
@@ -57,16 +36,6 @@ body.custom-background { background-color: #eeeeee; }
 										<div class="fly-but-wrap left relative">
 											<span></span> <span></span> <span></span> <span></span>
 										</div>
-										<!--fly-but-wrap-->
-										<div class="nav-logo left">
-											<h1>
-												<!--<a itemprop="url" href="index"><img
-													itemprop="logo"
-													src="#"
-													alt="News Sport" /></a>-->
-											</h1>
-										</div>
-										<!--nav-logo-->
 									</div>
 									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
@@ -111,56 +80,39 @@ body.custom-background { background-color: #eeeeee; }
 										<div id="home-left-wrap" class="left relative">
 											<div id="home-left-col" class="relative">
 												<h1 class="cat-head">More News</h1>
-												
+
 												<div id="home-mid-wrap" class="left relative">
 													<div id="archive-list-wrap" class="left relative">
 														<ul
 															class="archive-col-list left relative infinite-content">
-														  <c:forEach var="latests" items="${latests}">
-															<li class="infinite-post"><a
-																href="<c:url value="/details/${latests.id}"/>"
-																rel="bookmark"
-																title="News Sport">
-																	<div class="archive-list-out">
-																		<div class="archive-list-img left relative">
-																			<img width="450" height="270"
-																				src=${latests.cover_url}
-																				class="reg-img wp-post-imagejpg" alt="woman-beach2"
-																				onerror="imgError(this);" /> <img
-																				width="80" height="80"
-																				src=${latests.cover_url}
-																				class="mob-img wp-post-image jpg" alt="woman-beach2"
-																				onerror="imgError(this);" />
-																			<!--feat-info-wrap-->
-																		</div>
-																		<!--archive-list-img-->
-																		<div class="archive-list-in">
-																			<div class="archive-list-text left relative">
-																				<span class="side-list-cat">Sport</span>
-																				<h2>${latests.title}</h2>
-																				<p>${latests.abstract_content}</p>
+															<c:forEach var="latests" items="${latests}">
+																<li class="infinite-post"><a
+																	href="<c:url value="/details/${latests.id}"/>"
+																	rel="bookmark" title="News Sport">
+																		<div class="archive-list-out">
+																			<div class="archive-list-img left relative">
+																				<img width="450" height="270"
+																					src=${latests.cover_url
+																					}
+																				class="reg-img wp-post-imagejpg"
+																					alt="woman-beach2" onerror="imgError(this);" /> <img
+																					width="80" height="80" src=${latests.cover_url
+																					}
+																				class="mob-img wp-post-image jpg"
+																					alt="woman-beach2" onerror="imgError(this);" />
+																				<!--feat-info-wrap-->
 																			</div>
-																			<!--archive-list-text-->
-																		</div>
-																		<!--archive-list-in-->
-																	</div> <!--archive-list-out-->
-															</a></li>
-														  </c:forEach>
-														</ul>
-														<div>
-														 <span class="loading"></span>
-														
-														</div>
-														<a href="#" class="inf-more-but">More Posts</a>
-														<div class="nav-links">
-															<div class="pagination">
-																<span>Page 1 of 4</span> <span class="current">1</span>
-																<a
-																	href='#'
-																	class="inactive">2</a> 
-															</div>
-														</div>
-														<!--nav-links-->
+																			<!--archive-list-img-->
+																			<div class="archive-list-in">
+																				<div class="archive-list-text left relative">
+																					<span class="side-list-cat">Sport</span>
+																					<h2>${latests.title}</h2>
+																				</div>
+																			</div>
+																		</div> <!--archive-list-out-->
+																</a></li>
+															</c:forEach>
+														</ul>														
 													</div>
 													<!--archive-list-wrap-->
 												</div>
@@ -174,11 +126,11 @@ body.custom-background { background-color: #eeeeee; }
 									<div id="arch-right-col" class="relative">
 										<div id="sidebar-wrap" class="left relative">
 											<div class="widget-ad left relative">
-											  <c:forEach var="pages" items="${homes}">
-												 <a href="<c:url value="/details/${pages.id}"/>" target="_blank"> <img
-													src=${pages.cover_url} />
-												 </a>
-											 </c:forEach>
+												<c:forEach var="pages" items="${homes}">
+													<a href="<c:url value="/details/${pages.id}"/>"
+														target="_blank"> <img src=${pages.cover_url } onerror="imgError(this);" />
+													</a>
+												</c:forEach>
 											</div>
 											<!--widget-ad-->
 											<div id="mvp_facebook_widget-3"
@@ -188,24 +140,21 @@ body.custom-background { background-color: #eeeeee; }
 												</h4>
 												<div class="blog-widget-list left relative">
 													<c:forEach var="newmenus" items="${hots}">
-														<a href="<c:url value="/details/${newmenus.id}"/>" rel="bookmark">
-																<div class="blog-widget-img left relative">
-																	<img src=${newmenus.cover_url} alt="" width="300px"
-																		height="180px" class="widget-img-main wp-post-image"
-																		alt="woman-beach2"
-																		onerror="imgError(this);" /> <img
-																		src=${newmenus.cover_url} alt="" width="80px"
-																		height="80px" class="widget-img-side wp-post-image"
-																		alt="woman-beach2"
-																		onerror="imgError(this);" />
-																</div> <!--blog-widget-img-->
-																<div class="blog-widget-text left relative">
-																	
-																	<h2>${newmenus.title}</h2>
-																	<p>${newmenus.abstract_content}</p>
-																</div> <!--blog-widget-text-->
+														<a href="<c:url value="/details/${newmenus.id}"/>"
+															rel="bookmark">
+															<div class="blog-widget-img left relative">
+																<img src=${newmenus.cover_url } alt="" width="300px"
+																	height="180px" class="widget-img-main wp-post-image"
+																	alt="woman-beach2" onerror="imgError(this);" /> <img
+																	src=${newmenus.cover_url } alt="" width="80px"
+																	height="80px" class="widget-img-side wp-post-image"
+																	alt="woman-beach2" onerror="imgError(this);" />
+															</div> <!--blog-widget-img-->
+															<div class="blog-widget-text left relative">
+																<h2>${newmenus.title}</h2>
+															</div>
 														</a>
-												  </c:forEach>
+													</c:forEach>
 												</div>
 											</div>
 											<div id="mvp_catlist_widget-7"
@@ -215,24 +164,22 @@ body.custom-background { background-color: #eeeeee; }
 												</h4>
 												<div class="blog-widget-wrap left relative">
 													<ul class="blog-widget-list left relative">
-													  <c:forEach var="mores" items="${mores}">
-														<li><a href="<c:url value="/details/${mores.id}"/>" rel="bookmark">
-																<div class="blog-widget-img left relative">
-																	<img src=${mores.cover_url} alt="" width="300px"
-																		height="180px" class="widget-img-main wp-post-image"
-																		alt="woman-beach2"
-																		onerror="imgError(this);" /> <img
-																		src=${mores.cover_url} alt="" width="80px"
-																		height="80px" class="widget-img-side wp-post-image"
-																		alt="woman-beach2"
-																		onerror="imgError(this);" />
-																</div> <!--blog-widget-img-->
-																<div class="blog-widget-text left relative">
-																	<span class="side-list-cat">Sport</span>
-																	<h2>${mores.title}</h2>
-																	<p>${mores.abstract_content}</p>
-																</div> <!--blog-widget-text-->
-														</a></li>
+														<c:forEach var="mores" items="${mores}">
+															<li><a href="<c:url value="/details/${mores.id}"/>"
+																rel="bookmark">
+																	<div class="blog-widget-img left relative">
+																		<img src=${mores.cover_url } alt="" width="300px"
+																			height="180px" class="widget-img-main wp-post-image"
+																			alt="woman-beach2" onerror="imgError(this);" /> <img
+																			src=${mores.cover_url } alt="" width="80px"
+																			height="80px" class="widget-img-side wp-post-image"
+																			alt="woman-beach2" onerror="imgError(this);" />
+																	</div> <!--blog-widget-img-->
+																	<div class="blog-widget-text left relative">
+																		<span class="side-list-cat">Sport</span>
+																		<h2>${mores.title}</h2>
+																	</div>
+															</a></li>
 														</c:forEach>
 													</ul>
 												</div>
@@ -268,10 +215,5 @@ body.custom-background { background-color: #eeeeee; }
 		<i class="fa fa-angle-up fa-3"></i> <span class="to-top-text">To
 			Top</span>
 	</div>
-	<!--fly-to-top-->
-	<div class="fly-fade"></div>
-	<!--fly-fade-->
-
-	<div id="fb-root"></div>
 </body>
 </html>

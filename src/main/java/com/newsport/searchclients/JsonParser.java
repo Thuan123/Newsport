@@ -66,10 +66,8 @@ public class JsonParser {
 	}
 	
 	public static String parserID(String json){
-		List<Integer> idList = new ArrayList<Integer>();
 		try {
 			JSONObject obj = new JSONObject(json);
-			System.out.println(obj.getString("code"));
 			JSONArray lang= (JSONArray) obj.get("sparql");
 			if(lang.length()!=0){
 				return lang.get(0).toString();
@@ -78,30 +76,5 @@ public class JsonParser {
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
-	public static void main(String[] args) {
-		if (conn == null) {
-			try {
-				System.out.println(conn);
-				conn = Allegrograph.conn;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			System.out.println("ERROR");
-		}
-		ClassLoader classLoader = JsonParser.class.getClassLoader();
-		File file = new File(classLoader.getResource("pages/data.txt")
-				.getFile());
-		query=parserID(readFile(file));
-		if(query!=null){
-			System.out.println(query);
-			try {
-				AllegrographQuery.searchAPI(conn, query);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 	}
 }
