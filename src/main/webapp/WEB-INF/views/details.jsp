@@ -244,12 +244,12 @@ body.custom-background {
 																				src=${lienwans.news.cover_url
 																				}
 																				class="reg-img wp-post-image" alt="latte"
-																				sizes="(max-width: 300px) 100vw, 300px" /> <img
+																				onerror="imgError(this);" /> <img
 																				width="80" height="80"
 																				src=${lienwans.news.cover_url
 																				}
 																				class="mob-img wp-post-image" alt="latte"
-																				sizes="(max-width: 80px) 100vw, 80px" />
+																				onerror="imgError(this);" />
 																			</a>
 																		</div> <!--related-img-->
 																		<div class="mvp-related-text left relative">

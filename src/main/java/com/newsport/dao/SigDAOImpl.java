@@ -7,6 +7,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
@@ -27,26 +28,8 @@ public class SigDAOImpl implements SigDAO {
 	public List<Sig_article> list() {
 		// TODO Auto-generated method stub
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT id,title,abstract,cover_url,published,meta FROM sig_article ORDER BY crawled ASC limit 500";
-		List<Sig_article> listSigs = jdbcTemplate.query(sql,
-				new RowMapper<Sig_article>() {
-
-					@Override
-					public Sig_article mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
-						Sig_article aSig = new Sig_article();
-						
-						aSig.setId(rs.getInt("id"));
-						aSig.setTitle(rs.getString("title"));
-						aSig.setAbstract_content(rs.getString("abstract"));
-						aSig.setCover_url(rs.getString("cover_url"));
-						aSig.setPublished(rs.getDate("published"));
-						aSig.setMeta(rs.getString("meta"));
-						return aSig;
-					}
-
-				});
-		return listSigs;
+		String sql = "SELECT id,title,abstract,cover_url,published,meta FROM sig_article ORDER BY crawled DESC limit 500";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Sig_article>(Sig_article.class));
 	}
 
 	@Override
@@ -120,7 +103,6 @@ public class SigDAOImpl implements SigDAO {
 		// TODO Auto-generated method stub
 		
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		System.out.println(sigs.getId());
 		if (sigs.getId() > 0) {
 			
 			 String sql = " UPDATE sig_article"
@@ -134,49 +116,17 @@ public class SigDAOImpl implements SigDAO {
 	@Override
 	public List<Sig_image> getImage(int sigId, final String coverUrl) {
 		// TODO Auto-generated method stub
-		System.out.println("DAO");
 		jdbcTemplate = new JdbcTemplate(dataSource);
 		String sql = "SELECT url,des FROM sig_image WHERE sig_id="+sigId;
-		List<Sig_image> listImg = jdbcTemplate.query(sql,
-				new RowMapper<Sig_image>() {
-
-					@Override
-					public Sig_image mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
-						Sig_image aSig = new Sig_image();
-
-						if(!rs.getString("url").equals(coverUrl)){
-						aSig.setUrl(rs.getString("url"));
-						aSig.setDes(rs.getString("des"));
-						}
-						return aSig;
-					}
-
-				});
-		return listImg;
+		return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Sig_image>(Sig_image.class));			
 	}
 
 	@Override
 	public List<Sig_article> listPagination() {
 		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
 				jdbcTemplate = new JdbcTemplate(dataSource);
-				String sql = "SELECT id,title,abstract,cover_url,published,meta FROM sig_article ORDER BY crawled DESC limit 400";
-				List<Sig_article> listSigs = jdbcTemplate.query(sql,
-						new RowMapper<Sig_article>() {
-
-							@Override
-							public Sig_article mapRow(ResultSet rs, int rowNum)
-									throws SQLException {
-								Sig_article aSig = new Sig_article();
-
-								aSig.setId(rs.getInt("id"));
-								aSig.setTitle(rs.getString("title"));
-								aSig.setAbstract_content(rs.getString("abstract"));
-								aSig.setCover_url(rs.getString("cover_url"));
-								return aSig;
-							}
-
-						});
-				return listSigs;
+				String sql = "SELECT id,title,abstract,cover_url,published,meta FROM sig_article ORDER BY crawled DESC limit 500";
+				return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Sig_article>(Sig_article.class));
 	}
 }

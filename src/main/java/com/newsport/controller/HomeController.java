@@ -43,7 +43,7 @@ public class HomeController {
 
 	@Autowired
 	private SigDAO sigDAOs;
-	List<Sig_article> listPage;
+	List<Sig_article> listPage = new ArrayList<Sig_article>();
 	List<Sig_article> list_lienwan;
 	List<String> list_meta;
 	List<Integer> allegrographList;
@@ -67,8 +67,9 @@ public class HomeController {
 
 	@ModelAttribute
 	public void addingCommonObjects(Model model) {
-
-		listPage = sigDAOs.list();
+		if (listPage.isEmpty()) {
+			listPage.addAll(sigDAOs.list());
+		}
 		model.addAttribute("menus", RandomArr.RandomElement(5, listPage));
 		model.addAttribute("homes", RandomArr.RandomElement(1, listPage));
 		model.addAttribute("hots", RandomArr.RandomElement(1, listPage));
@@ -303,17 +304,14 @@ public class HomeController {
 
 		ClassLoader classLoader = JsonParser.class.getClassLoader();
 
-		 File file = new
-		 File(classLoader.getResource("pages/data.txt").getFile());
+		File file = new File(classLoader.getResource("pages/data.txt").getFile());
 
-		 data = JsonParser.parserID(JsonParser.readFile(file));
-		/*try {
-			if (sigs.getQuery() != null) {
-				data = JsonParser.parserID(HttpCilentExample.sendGet(sigs.getQuery()));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
+		data = JsonParser.parserID(JsonParser.readFile(file));
+		/*
+		 * try { if (sigs.getQuery() != null) { data =
+		 * JsonParser.parserID(HttpCilentExample.sendGet(sigs.getQuery())); } }
+		 * catch (Exception e) { e.printStackTrace(); }
+		 */
 
 		if (data != null) {
 			query = data;/* JsonParser.parserID(JsonParser.readFile(file)); */
