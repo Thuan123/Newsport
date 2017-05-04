@@ -40,20 +40,6 @@ th, td {
 		type="org.springframework.beans.support.PagedListHolder" />
 	<div id="site" class="left relative">
 		<div id="site-wrap" class="left relative">
-			<div id="fly-wrap">
-				<div class="fly-wrap-out">
-					<div class="fly-side-wrap">
-						<jsp:include page="fly-side-wrap.jsp"></jsp:include>
-					</div>
-					<!--fly-side-wrap-->
-					<div class="fly-wrap-in">
-						<jsp:include page="fly-menu-wrap.jsp"></jsp:include>
-					</div>
-					<!--fly-wrap-in-->
-				</div>
-				<!--fly-wrap-out-->
-			</div>
-			<!--fly-wrap-->
 			<div id="head-main-wrap" class="left relative">
 				<div id="head-main-top" class="left relative"></div>
 				<!--head-main-top-->
@@ -63,36 +49,20 @@ th, td {
 							<div id="main-nav-cont" class="left" itemscope
 								itemtype="http://schema.org/Organization">
 								<div class="nav-logo-out">
-									<div class="nav-left-wrap left relative">
-										<div class="fly-but-wrap left relative">
-											<span></span> <span></span> <span></span> <span></span>
-										</div>
-									</div>
-									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
 										<div class="nav-menu-out">
 											<div class="nav-menu-in">
 												<jsp:include page="nav-menu.jsp"></jsp:include>
 											</div>
-											<!--nav-menu-in-->
 											<div class="nav-right-wrap relative"></div>
-											<!--nav-right-wrap-->
 										</div>
-										<!--nav-menu-out-->
 									</div>
-									<!--nav-logo-in-->
 								</div>
-								<!--nav-logo-out-->
 							</div>
-							<!--main-nav-cont-->
 						</div>
-						<!--nav-in-->
 					</div>
-					<!--nav-out-->
 				</div>
-				<!--main-nav-wrap-->
 			</div>
-			<!--head-main-wrap-->
 			<div id="body-main-wrap" class="left relative">
 				<div class="body-main-out relative">
 					<div class="body-main-in">
@@ -109,19 +79,19 @@ th, td {
 									<div class="home-wrap-in1">
 										<div id="home-left-wrap" class="left relative">
 											<div id="home-left-col" class="relative">
-											
+
 												<h1 class="cat-head">All News</h1>
 												<c:url value="./index" var="pagedLink">
 													<c:param name="action" value="list" />
 													<c:param name="p" value="~" />
 												</c:url>
-												
+
 												<div id="home-mid-wrap" class="left relative">
-													<div id="archive-list-wrap" class="left relative">
-													</div>
+													<div id="archive-list-wrap" class="left relative"></div>
 													<div id="archive-list-wrap" class="left relative">
 														<ul class="blog-widget-list left relative">
-															<c:forEach var="newlienwans" items="${pagedListHolder.pageList}">
+															<c:forEach var="newlienwans"
+																items="${pagedListHolder.pageList}">
 																<li class="infinite-post"><a rel="bookmark"
 																	title="News Sport">
 																		<div class="archive-list-out">
@@ -130,8 +100,8 @@ th, td {
 																					src=${newlienwans.cover_url
 																					}
 																					class="reg-img wp-post-image" alt="woman-beach2"
-																					onerror="imgError(this);" /> <img
-																					width="80" height="80"
+																					onerror="imgError(this);" /> <img width="80"
+																					height="80"
 																					src=${newlienwans.cover_url
 																					}
 																					class="mob-img wp-post-image" alt="woman-beach2"
@@ -171,7 +141,8 @@ th, td {
 														</div>
 
 														<div>
-                                                            <tg:paging pagedListHolder="${pagedListHolder}" pagedLink="${pagedLink}"/>
+															<tg:paging pagedListHolder="${pagedListHolder}"
+																pagedLink="${pagedLink}" />
 														</div>
 														<!--nav-links-->
 													</div>
@@ -186,9 +157,7 @@ th, td {
 									<!--home-wrap-in1-->
 									<div id="arch-right-col" class="relative">
 										<div id="sidebar-wrap" class="left relative">
-											<div class="widget-ad left relative">
-												
-											</div>
+											<div class="widget-ad left relative"></div>
 											<!--widget-ad-->
 											<div id="mvp_facebook_widget-3"
 												class="side-widget mvp_facebook_widget">

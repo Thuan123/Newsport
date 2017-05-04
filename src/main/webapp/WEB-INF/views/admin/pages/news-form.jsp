@@ -30,59 +30,27 @@ body.custom-background {
 	class="single single-post postid-144 single-format-standard custom-background">
 	<div id="site" class="left relative">
 		<div id="site-wrap" class="left relative">
-			<div id="fly-wrap">
-				<div class="fly-wrap-out">
-					<div class="fly-side-wrap">
-						<jsp:include page="fly-side-wrap.jsp"></jsp:include>
-					</div>
-					<!--fly-side-wrap-->
-					<div class="fly-wrap-in">
-						<jsp:include page="fly-menu-wrap.jsp"></jsp:include>
-					</div>
-					<!--fly-wrap-in-->
-				</div>
-				<!--fly-wrap-out-->
-			</div>
 			<!--fly-wrap-->
 			<div id="head-main-wrap" class="left relative">
-				<div id="head-main-top" class="left relative"></div>
-				<!--head-main-top-->
 				<div id="main-nav-wrap">
 					<div class="nav-out">
 						<div class="nav-in">
 							<div id="main-nav-cont" class="left" itemscope
 								itemtype="http://schema.org/Organization">
 								<div class="nav-logo-out">
-									<div class="nav-left-wrap left relative">
-										<div class="fly-but-wrap left relative">
-											<span></span> <span></span> <span></span> <span></span>
-										</div>
-									</div>
-									<!--nav-left-wrap-->
 									<div class="nav-logo-in">
 										<div class="nav-menu-out">
 											<div class="nav-menu-in">
 												<jsp:include page="nav-menu.jsp"></jsp:include>
 											</div>
-											<!--nav-menu-in-->
-											<div class="nav-right-wrap relative"></div>
-											<!--nav-right-wrap-->
 										</div>
-										<!--nav-menu-out-->
 									</div>
-									<!--nav-logo-in-->
 								</div>
-								<!--nav-logo-out-->
 							</div>
-							<!--main-nav-cont-->
 						</div>
-						<!--nav-in-->
 					</div>
-					<!--nav-out-->
 				</div>
-				<!--main-nav-wrap-->
 			</div>
-			<!--head-main-wrap-->
 			<div id="body-main-wrap" class="left relative" itemscope
 				itemtype="http://schema.org/Article">
 				<div class="body-main-out relative">
@@ -171,7 +139,7 @@ body.custom-background {
 															<div class="post-tags">
 																<div class="post-tags">
 																	<span class="post-tags-header">Meta data:</span> <br>
-																	
+
 																	<br> <span itemprop="keywords">
 																		<div class="tag-cloud left relative">
 																			<c:forEach var="metas" items="${metas}">

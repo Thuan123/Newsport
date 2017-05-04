@@ -196,15 +196,15 @@ body.custom-background {
 																	<li>
 																		<div class="mvp-related-img left relative">
 																			<a
-																				href="<c:url value="/details/${lienwans.news.id}"/>"
-																				rel="bookmark" title=${lienwans.news.title}> <img
+																				href="<c:url value="/details/${lienwans.id}"/>"
+																				rel="bookmark" title=${lienwans.title}> <img
 																				width="300" height="180"
-																				src=${lienwans.news.cover_url
+																				src=${lienwans.cover_url
 																				}
 																				class="reg-img wp-post-image" alt="latte"
 																				onerror="imgError(this);" /> <img width="80"
 																				height="80"
-																				src=${lienwans.news.cover_url
+																				src=${lienwans.cover_url
 																				}
 																				class="mob-img wp-post-image" alt="latte"
 																				onerror="imgError(this);" />
@@ -212,8 +212,8 @@ body.custom-background {
 																		</div> <!--related-img-->
 																		<div class="mvp-related-text left relative">
 																			<a
-																				href="<c:url value="/details/${lienwans.news.id}"/>">
-																				${lienwans.news.title} </a>
+																				href="<c:url value="/details/${lienwans.id}"/>">
+																				${lienwans.title} </a>
 																		</div> <!--related-text-->
 																	</li>
 																</c:forEach>
@@ -273,7 +273,6 @@ body.custom-background {
 										<div class="side-title-wrap left relative">
 											<h3 class="side-list-title">More News</h3>
 										</div>
-										<!--side-title-wrap-->
 										<div class="side-pop-wrap left relative">
 											<div class="feat-widget-cont left relative">
 												<c:forEach var="sig_mores" items="${mores}">

@@ -53,11 +53,10 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView listHome(ModelAndView model) {
-		
-		
-	    listPage.clear();
-	    listPage.addAll(sigDAOs.list(200));
-	    
+
+		listPage.clear();
+		listPage.addAll(sigDAOs.list(200));
+
 		model.addObject("features", RandomArr.RandomElement(4, listPage));
 		model.addObject("feats", RandomArr.RandomElement(3, listPage));
 		model.addObject("foots", RandomArr.RandomElement(21, listPage));
@@ -71,12 +70,8 @@ public class HomeController {
 
 	@ModelAttribute
 	public void addingCommonObjects(Model model) {
-		if (listPage.isEmpty()) {
-			listPage.addAll(sigDAOs.list(200));
-		}
-		model.addAttribute("homes", RandomArr.RandomElement(1, listPage));
-		model.addAttribute("hots", RandomArr.RandomElement(1, listPage));
-		model.addAttribute("mores", RandomArr.RandomElement(5, listPage));
+		
+		model.addAttribute("mores", sigDAOs.getRandomSig(4));
 
 		if (conn == null) {
 			Allegrograph alle = new Allegrograph();
@@ -93,7 +88,8 @@ public class HomeController {
 
 	@RequestMapping(value = "/keydetails/{id}", method = RequestMethod.GET)
 	public ModelAndView keydetails(@PathVariable("id") int id, ModelAndView model) {
-		List<Sort> sortList = new ArrayList<Sort>();
+		List<Sig_article> relatedList = new ArrayList<Sig_article>();
+		List<Sig_article> newLists = new ArrayList<Sig_article>();
 		list_meta = new ArrayList<String>();
 		List<Sig_image> listImg = null;
 		sig = sigDAOs.findID(id);
@@ -103,26 +99,21 @@ public class HomeController {
 			list_meta = RDF.getRDF(sig.getMeta().toString());
 			if (!list_meta.isEmpty()) {
 				list_meta = RDF.removeDuplicate(list_meta);
+				relatedList.addAll(sigDAOs.getRelatedNew(list_meta));
 			}
 		}
+		
+		relatedList = RDF.removeDuplicateSig(relatedList);
 
-		if (!list_meta.isEmpty()) {
-			for (int i = 0; i < listPage.size(); i++) {
-				if ((listPage.get(i).getMeta() != null)) {
-
-					List<String> list_meta_2 = RDF.getRDF(listPage.get(i).getMeta().toString());
-					HashSet<String> set1 = new HashSet<String>(list_meta);
-					HashSet<String> set2 = new HashSet<String>(list_meta_2);
-					set1.retainAll(set2);
-					if (set1.size() != 3 && sortList.size() < 3) {
-						sortList.add(new Sort(listPage.get(i), set1.size()));
-					}
-				}
-			}
-			Collections.sort(sortList, new SortComparator());
+		if(relatedList.size() <= 3){
+			newLists.addAll(relatedList);
+		}else{
+			newLists.add(relatedList.get(0));
+			newLists.add(relatedList.get(1));
+			newLists.add(relatedList.get(2));
 		}
-
-		model.addObject("metasort", sortList);
+		
+		model.addObject("metasort", newLists);
 		model.addObject("metas", list_meta);
 		if (listImg.size() != 0) {
 			if (listImg.get(0).getUrl() == null) {
@@ -131,7 +122,7 @@ public class HomeController {
 			model.addObject("listimg", listImg);
 		}
 		model.addObject("sigs", sig);
-		model.setViewName("details");
+		model.setViewName("key_details");
 		return model;
 	}
 
@@ -194,32 +185,24 @@ public class HomeController {
 
 	@RequestMapping(value = "/keymetas/{id}", method = RequestMethod.GET)
 	public ModelAndView keymetanews(@PathVariable("id") int id, ModelAndView model) {
-		List<Sort> sortList = new ArrayList<Sort>();
+		List<Sig_article> relatedList = new ArrayList<Sig_article>();
 		List<String> list_meta = new ArrayList<String>();
 
 		Sig_article sig = sigDAOs.findID(id);
 		if ((sig.getMeta() != null)) {
 			list_meta = RDF.getRDF(sig.getMeta().toString());
 		}
+		
 		if (!list_meta.isEmpty()) {
 			list_meta = RDF.removeDuplicate(list_meta);
-			for (int i = 0; i < listPage.size(); i++) {
-				if ((listPage.get(i).getMeta() != null)) {
-					List<String> list_meta_2 = RDF.getRDF(listPage.get(i).getMeta().toString());
-					HashSet<String> set1 = new HashSet<String>(list_meta);
-					HashSet<String> set2 = new HashSet<String>(list_meta_2);
-					set1.retainAll(set2);
-					if (set1.size() != 0) {
-						sortList.add(new Sort(listPage.get(i), set1.size()));
-					}
-				}
-			}
-			Collections.sort(sortList, new SortComparator());
+			relatedList.addAll(sigDAOs.getRelatedNew(list_meta));
 		}
 
+		relatedList = RDF.removeDuplicateSig(relatedList);
+
 		model.addObject("id", id);
-		model.addObject("latests", sortList);
-		model.setViewName("more_related");
+		model.addObject("latests", relatedList);
+		model.setViewName("key_more_related");
 		return model;
 	}
 

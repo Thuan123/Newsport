@@ -54,7 +54,6 @@ public class RDF {
 	}
 
 	public static List<Sig_article> removeDuplicateSig(List<Sig_article> arrList) {
-		@SuppressWarnings("unchecked")
 		HashSet<Sig_article> h = new HashSet<Sig_article>(arrList);
 		arrList.clear();
 		arrList.addAll(h);

@@ -39,7 +39,7 @@ body.custom-background {
 							<div id="main-nav-cont" class="left" itemscope
 								itemtype="http://schema.org/Organization">
 								<div class="nav-logo-out">
-									
+
 									<div class="nav-logo-in">
 										<div class="nav-menu-out">
 											<div class="nav-menu-in">
@@ -81,10 +81,12 @@ body.custom-background {
 									<div class="home-wrap-in1">
 										<table style="width: 30%">
 											<tr>
-												<td><a class="post-cat-link" href="<c:url value="/metas/${id}"/>"> <span
+												<td><a class="post-cat-link"
+													href="<c:url value="/metas/${id}"/>"> <span
 														class="post-head-cat">Semantic1</span>
 												</a></td>
-												<td><a class="post-cat-link" href="<c:url value="/keymetas/${id}"/>"> <span
+												<td><a class="post-cat-link"
+													href="<c:url value="/keymetas/${id}"/>"> <span
 														class="post-head-cat">Key</span>
 												</a></td>
 											</tr>
@@ -98,27 +100,27 @@ body.custom-background {
 															class="archive-col-list left relative infinite-content">
 															<c:forEach var="latests" items="${latests}">
 																<li class="infinite-post"><a
-																	href="<c:url value="/details/${latests.news.id}"/>"
+																	href="<c:url value="/details/${latests.id}"/>"
 																	rel="bookmark" title="News Sport">
 																		<div class="archive-list-out">
 																			<div class="archive-list-img left relative">
 																				<img width="450" height="270"
-																					src=${latests.news.cover_url
+																					src=${latests.cover_url
 																					}
 																					class="reg-img wp-post-image" alt="woman-beach2"
-																					onerror="imgError(this);"/> <img
-																					width="80" height="80"
-																					src=${latests.news.cover_url
+																					onerror="imgError(this);" /> <img width="80"
+																					height="80"
+																					src=${latests.cover_url
 																					}
 																					class="mob-img wp-post-image" alt="woman-beach2"
-																					onerror="imgError(this);"/>
+																					onerror="imgError(this);" />
 
 																			</div>
 
 																			<div class="archive-list-in">
 																				<div class="archive-list-text left relative">
 																					<span class="side-list-cat">Sport</span>
-																					<h2>${latests.news.title}</h2>
+																					<h2>${latests.title}</h2>
 																				</div>
 
 																			</div>
@@ -159,12 +161,10 @@ body.custom-background {
 																	<div class="blog-widget-img left relative">
 																		<img src=${mores.cover_url } alt="" width="300px"
 																			height="180px" class="widget-img-main wp-post-image"
-																			alt="woman-beach2"
-																			onerror="imgError(this);" /> <img
+																			alt="woman-beach2" onerror="imgError(this);" /> <img
 																			src=${mores.cover_url } alt="" width="80px"
 																			height="80px" class="widget-img-side wp-post-image"
-																			alt="woman-beach2"
-																			onerror="imgError(this);" />
+																			alt="woman-beach2" onerror="imgError(this);" />
 																	</div>
 																	<div class="blog-widget-text left relative">
 																		<span class="side-list-cat">Sport</span>
@@ -207,10 +207,5 @@ body.custom-background {
 		<i class="fa fa-angle-up fa-3"></i> <span class="to-top-text">To
 			Top</span>
 	</div>
-	<!--fly-to-top-->
-	<div class="fly-fade"></div>
-	<!--fly-fade-->
-
-	<div id="fb-root"></div>
 </body>
 </html>
