@@ -120,7 +120,7 @@ public class SigDAOImpl implements SigDAO {
 	@Override
 	public List<Sig_article> listPagination() {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT id,title,abstract,cover_url,published,meta FROM sig_article ORDER BY crawled DESC limit 500";
+		String sql = "SELECT id,title,abstract,cover_url,published,meta FROM sig_article ORDER BY crawled DESC limit 600";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Sig_article>(Sig_article.class));
 	}
 
@@ -135,13 +135,6 @@ public class SigDAOImpl implements SigDAO {
 				sql = sql + " meta LIKE'%" + meta.get(i) + "%'";
 			}
 		}
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Sig_article>(Sig_article.class));
-	}
-
-	@Override
-	public List<Sig_article> getRandomSig(int number) {
-		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT id,title,abstract,cover_url,published,meta FROM sig_article ORDER BY RAND() limit 4";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Sig_article>(Sig_article.class));
 	}
 }

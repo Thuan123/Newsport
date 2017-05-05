@@ -54,24 +54,45 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView listHome(ModelAndView model) {
 
-		listPage.clear();
-		listPage.addAll(sigDAOs.list(200));
+		if (listPage.isEmpty()) {
+			listPage.addAll(sigDAOs.list(200));
+		} else {
+			List<Sig_article> news = sigDAOs.list(10);
+			if(!news.isEmpty()){
+				for(Sig_article sig: news){
+					if(listPage.indexOf(sig)!= -1){
+						listPage.add(sig);
+					}
+				}
+			}
+		}	
 
-		model.addObject("features", RandomArr.RandomElement(4, listPage));
-		model.addObject("feats", RandomArr.RandomElement(3, listPage));
-		model.addObject("foots", RandomArr.RandomElement(21, listPage));
-		model.addObject("hots", RandomArr.RandomElement(2, listPage));
-		model.addObject("galerys", RandomArr.RandomElement(15, listPage));
-		model.addObject("latests", RandomArr.RandomElement(40, listPage));
-		model.addObject("mores", RandomArr.RandomElement(21, listPage));
+		model.addObject("features", getFeatures(listPage, 0, 3));
+		model.addObject("feats", getFeatures(listPage, 4, 6));
+		model.addObject("foots", getFeatures(listPage, 7, 28));
+		model.addObject("hots", getFeatures(listPage, 29, 30));
+		model.addObject("galerys", getFeatures(listPage, 31, 46));
+		model.addObject("latests", getFeatures(listPage, 47, 87));
+		model.addObject("mores", getFeatures(listPage, 88, 109));
 		model.setViewName("home");
 		return model;
 	}
 
+	public List<Sig_article> getFeatures(List<Sig_article> sigList, int start, int end) {
+		List<Sig_article> columnList = new ArrayList<Sig_article>();
+		for (int i = start; i <= end; i++) {
+			if (i < sigList.size()) {
+				columnList.add(sigList.get(i));
+			}
+		}
+		
+		return columnList;
+	}
+
 	@ModelAttribute
 	public void addingCommonObjects(Model model) {
-		
-		model.addAttribute("mores", sigDAOs.getRandomSig(4));
+
+		// model.addAttribute("mores", sigDAOs.list(4));
 
 		if (conn == null) {
 			Allegrograph alle = new Allegrograph();
@@ -102,17 +123,17 @@ public class HomeController {
 				relatedList.addAll(sigDAOs.getRelatedNew(list_meta));
 			}
 		}
-		
+
 		relatedList = RDF.removeDuplicateSig(relatedList);
 
-		if(relatedList.size() <= 3){
+		if (relatedList.size() <= 3) {
 			newLists.addAll(relatedList);
-		}else{
+		} else {
 			newLists.add(relatedList.get(0));
 			newLists.add(relatedList.get(1));
 			newLists.add(relatedList.get(2));
 		}
-		
+
 		model.addObject("metasort", newLists);
 		model.addObject("metas", list_meta);
 		if (listImg.size() != 0) {
@@ -192,7 +213,7 @@ public class HomeController {
 		if ((sig.getMeta() != null)) {
 			list_meta = RDF.getRDF(sig.getMeta().toString());
 		}
-		
+
 		if (!list_meta.isEmpty()) {
 			list_meta = RDF.removeDuplicate(list_meta);
 			relatedList.addAll(sigDAOs.getRelatedNew(list_meta));

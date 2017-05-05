@@ -15,5 +15,4 @@ public interface SigDAO {
 		public List<Sig_article> find(int start, int limit);
 		public List<Sig_article> getRelatedNew(List<String> meta);
 		public List<Sig_image> getImage(int sigId, String coverUrl);
-		public List<Sig_article> getRandomSig(int number);
 }
